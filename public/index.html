@@ -1,0 +1,182 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>마음셋 · 실시간 5분</title>
+<style>:root{--bg:#f7f6f2;--card:#fff;--ink:#242424;--muted:#777;--line:#e8e5df;--a:#6d5dfc;--a2:#efeefe;--danger:#d9534f}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif;background:var(--bg);color:var(--ink)}button,input{font:inherit}button{cursor:pointer;border:0}.top{height:60px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 18px;position:sticky;top:0;z-index:3}.logo{font-weight:900;font-size:20px}.logo b{color:var(--a)}.nav button{background:none;padding:8px;color:#555}.screen{display:none;max-width:760px;margin:auto;padding:28px 16px 60px}.screen.active{display:block}.hero{text-align:center;padding:55px 10px}.hero h1{font-size:35px;line-height:1.2;letter-spacing:-.06em}.hero p,.sub{color:var(--muted);line-height:1.7}.pill{display:inline-block;background:var(--a2);color:var(--a);padding:6px 10px;border-radius:999px;font-size:12px;font-weight:800}.btn{padding:13px 18px;border-radius:12px;font-weight:800}.primary{background:var(--a);color:#fff}.secondary{background:#eeeae6;color:#333}.danger{background:#fff0ef;color:var(--danger)}.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 8px 30px rgba(0,0,0,.035)}.role-card{min-height:210px;display:flex;flex-direction:column;justify-content:space-between}.center{text-align:center}.field{display:flex;gap:8px;max-width:420px;margin:20px auto}.field input{flex:1;padding:13px;border:1px solid var(--line);border-radius:12px;outline:none}.waiting{margin-top:25px}.status{margin:22px 0;padding:14px;background:#faf9f7;border-radius:12px}.chat-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.timer{font-weight:900;color:var(--a);font-variant-numeric:tabular-nums}.room{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}.members{padding:12px;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--line)}.member{font-size:11px;background:#f3f1ef;padding:6px 9px;border-radius:999px}.messages{height:54vh;min-height:330px;overflow:auto;padding:16px;background:#fbfaf8}.msg{max-width:78%;margin-bottom:12px}.msg.me{margin-left:auto}.who{font-size:11px;color:#888;margin-bottom:4px}.bubble{background:#fff;border:1px solid var(--line);padding:10px 13px;border-radius:14px;line-height:1.5}.msg.me .bubble{background:var(--a);border-color:var(--a);color:#fff}.composer{display:flex;gap:7px;padding:10px;border-top:1px solid var(--line)}.composer input{flex:1;min-width:0;border:1px solid var(--line);border-radius:12px;padding:12px}.reward-options{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:22px 0}.reward-options button{padding:16px 6px;border:1px solid var(--line);background:#fff;border-radius:12px;font-weight:900}.reward-options button.sel{border:2px solid var(--a);background:var(--a2);color:var(--a)}.rank-tabs{display:flex;gap:7px;margin:15px 0}.rank-tabs button{padding:9px 16px;border-radius:999px;background:#eeeae6}.rank-tabs button.active{background:var(--a);color:#fff}.rank{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden}.rr{display:grid;grid-template-columns:48px 1fr 100px 65px;padding:14px;border-bottom:1px solid var(--line)}.rr:last-child{border-bottom:0}.note{font-size:12px;color:#888;line-height:1.6}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:11px 16px;border-radius:999px;z-index:10;display:none}.toast.on{display:block}@media(max-width:650px){.cards{grid-template-columns:1fr}.hero h1{font-size:30px}.reward-options{grid-template-columns:repeat(2,1fr)}.rr{grid-template-columns:40px 1fr 85px}.rr span:last-child{display:none}}
+.account-card{max-width:460px;margin:16px auto}.auth-tabs{display:flex;background:var(--a2);padding:4px;border-radius:12px;margin:20px 0}.auth-tabs button{flex:1;padding:11px;border-radius:9px;background:transparent;color:#666}.auth-tabs button.active{background:white;color:var(--a);font-weight:800}.auth-form label{display:block;font-size:14px;font-weight:700;margin:15px 0 7px}.auth-form input,.auth-form select{width:100%;min-width:0;border:1px solid var(--line);background:white;border-radius:10px;padding:12px;font:inherit}.auth-form .form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.auth-form .btn{width:100%;margin-top:18px}.form-error{color:var(--danger);min-height:20px;font-size:14px;line-height:1.6}.profile-row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line)}.profile-row span:first-child{color:var(--muted)}.delete-area{margin-top:28px;padding-top:18px;border-top:1px solid var(--line)}.delete-area summary{color:var(--danger);cursor:pointer}.nav button{padding:8px 5px;font-size:14px}
+.reward-notice{max-width:728px;margin:16px auto 0;padding:16px;background:#efeefe;border:1px solid #d9d4ff;border-radius:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}.reward-notice[hidden]{display:none}.reward-notice p{margin:5px 0 0;font-size:13px;color:#666}.reward-notice .btn{flex-shrink:0;padding:10px 14px}@media(max-width:760px){.reward-notice{margin:12px 16px 0}}
+.family-bar{max-width:728px;margin:14px auto 0;padding:18px;background:#fff;border:1px solid #d9d4ff;border-radius:16px}.family-bar[hidden]{display:none}.family-bar h3{margin:0 0 8px}.family-bar input{width:100%;padding:12px;border:1px solid var(--line);border-radius:9px;background:#faf9f7;font:inherit;font-size:13px}.family-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.family-bar p{margin:8px 0;font-size:13px;color:#777}@media(max-width:760px){.family-bar{margin:12px 16px 0}}
+</style></head><body><header class="top"><div class="logo">마음<b>셋</b></div><nav class="nav"><button onclick="navigate('home')">홈</button><button onclick="navigate('ranking')">랭킹</button><button id="accountNav" onclick="openAccount()">내 정보</button></nav></header><aside id="rewardNotice" class="reward-notice" role="status" aria-live="polite" hidden><div><strong id="rewardNoticeText"></strong><p>대화에 함께해주셔서 감사합니다. 랭킹에도 반영됐어요.</p></div><button id="noticeAck" class="btn primary" onclick="acknowledgeReward()">확인</button></aside>
+<aside id="familyBar" class="family-bar" hidden><h3>가족 초대방</h3><p id="familyStatus">링크를 받은 세 사람끼리만 대화합니다.</p><input id="inviteLink" readonly aria-label="가족 초대 링크"><div class="family-actions"><button class="btn primary" onclick="shareFamilyInvite()">초대 링크 공유</button><button class="btn secondary" onclick="copyFamilyInvite()">링크 복사</button><button class="btn secondary" onclick="exitFamilyInvite()">초대방 나가기</button></div><p>초대 링크는 24시간 동안 유효하며 한 번의 대화에 사용됩니다.</p></aside>
+<section id="auth" class="screen active"><div class="card account-card"><span class="pill">마음셋 시작하기</span><h1>다시 만날 이름 하나</h1><p id="authInviteHint" class="note" hidden>가족 초대방에 입장하려면 가입하거나 로그인해주세요. 초대 정보는 그대로 유지됩니다.</p><p class="sub">한 번 가입하고, 내 닉네임으로 이야기하세요.</p><div class="auth-tabs"><button id="signupTab" onclick="setAuthMode('register')">회원가입</button><button id="loginTab" onclick="setAuthMode('login')">로그인</button></div><form class="auth-form" id="authForm" onsubmit="submitAuth(event)"><label for="username">아이디</label><input id="username" name="username" autocomplete="username" autocapitalize="none" spellcheck="false" minlength="4" maxlength="32" pattern="[A-Za-z0-9_]{4,32}" placeholder="영문·숫자·밑줄 4~32자" required><label for="password">비밀번호</label><input id="password" name="password" type="password" minlength="8" maxlength="128" required><div id="signupFields"><label for="signupNickname">닉네임</label><input id="signupNickname" name="nickname" maxlength="20" placeholder="대화와 랭킹에서 사용할 이름"><div class="form-row"><div><label for="gender">성별</label><select id="gender" name="gender"><option value="">선택</option><option value="남">남</option><option value="여">여</option></select></div><div><label for="age">나이</label><input id="age" name="age" type="number" min="1" max="120" step="1" inputmode="numeric" placeholder="만 나이"></div></div><p class="note">성별과 나이는 다른 참여자에게 공개되지 않습니다.</p></div><p id="authError" class="form-error" role="alert"></p><button id="authSubmit" type="submit" class="btn primary">가입하고 시작하기</button><p class="note">이 기기에서 로그인 상태가 유지됩니다. 다른 기기에서는 아이디와 비밀번호로 로그인하세요.</p></form></div></section>
+<section id="account" class="screen"><div class="card account-card"><span class="pill">내 계정</span><h1 id="profileTitle">내 정보</h1><div id="profileRows"></div><button class="btn secondary" style="margin-top:22px;width:100%" onclick="logout()">로그아웃</button><details class="delete-area"><summary>회원탈퇴</summary><p class="sub">탈퇴하면 회원정보와 내 보상·랭킹 기록이 삭제되며 복구할 수 없습니다.</p><form class="auth-form" onsubmit="deleteAccount(event)"><label for="deletePassword">현재 비밀번호 확인</label><input id="deletePassword" type="password" autocomplete="current-password" maxlength="128" required><p id="deleteError" class="form-error" role="alert"></p><button id="deleteBtn" class="btn danger" type="submit">계정과 기록 삭제하고 탈퇴</button></form></details></div></section>
+<section id="home" class="screen"><div class="hero"><span class="pill">실시간 테스트 버전</span><h1>AI 시대,<br>실제 사람에게 위로받는 5분</h1><p>서로 모르는 세 사람이 만나<br>5분 동안 이야기하고, 듣고, 공감합니다.</p><button class="btn primary" onclick="show('role')">5분 시작하기</button><div style="margin-top:14px"><button id="createFamilyBtn" class="btn secondary" onclick="createFamilyInvite()">가족방 만들고 초대하기</button></div></div></section>
+<section id="role" class="screen"><div class="center"><h1>어떤 역할로 참여할까요?</h1><p class="sub">가입한 닉네임으로 참여합니다.</p></div><div class="field"><input id="nick" maxlength="20" aria-label="내 닉네임" readonly></div><div class="cards"><div class="card role-card"><div><span class="pill">위로받기</span><h2>마음하나</h2><p class="sub">오늘 마음속 이야기를 꺼내놓고 두 사람의 이야기를 들어보세요.</p></div><button class="btn primary" onclick="join('하나')">위로받기</button></div><div class="card role-card"><div><span class="pill">위로해주기</span><h2>마음둘 / 마음셋</h2><p class="sub">누군가의 이야기를 판단하지 않고 들어주고 공감합니다.</p></div><button class="btn primary" onclick="join('둘')">위로해주기</button></div></div></section>
+<section id="waiting" class="screen"><div class="card waiting center"><span class="pill">대기실</span><h2>매칭을 기다리고 있어요</h2><div class="status" id="waitStatus">현재 대기 중입니다.</div><p class="sub" id="counts">마음하나 0명 · 위로해주기 0명</p><button class="btn secondary" onclick="cancelQueue()">대기 취소</button></div></section>
+<section id="chat" class="screen"><div class="chat-head"><div><span class="pill">익명 3인 대화</span><h2 style="margin:7px 0 0">마음셋 채팅방</h2></div><div class="timer" id="timer">05:00</div></div><div class="room"><div class="members" id="members"></div><div class="messages" id="messages"></div><div class="composer"><input id="input" placeholder="따뜻하게 이야기를 건네보세요" onkeydown="if(event.key==='Enter')send()"><button class="btn primary" onclick="send()">보내기</button></div></div><p class="note">한 명이라도 나가면 방 전체가 종료됩니다. 5분을 정상적으로 채운 경우 마음하나만 가상 보상을 선택할 수 있습니다.</p><div class="center" style="margin-top:14px"><button class="btn danger" onclick="leave()">채팅 나가기</button></div></section>
+<section id="reward" class="screen"><div class="card center"><span class="pill">5분 완료</span><h2>고마운 마음을 전해보세요</h2><p class="sub">현재는 실제 결제되지 않는 가상 보상입니다.</p><div class="reward-options"><button onclick="reward(0)">0원</button><button onclick="reward(1000)">1,000원</button><button onclick="reward(2000)">2,000원</button><button onclick="reward(3000)">3,000원</button></div><p id="split" class="note">선택 금액은 마음둘 1/3 · 마음셋 1/3 · 플랫폼 1/3으로 기록됩니다.</p><button id="rewardBtn" class="btn primary" disabled onclick="finishReward()">보상 선택 완료</button></div></section>
+<section id="ranking" class="screen"><div class="center"><span class="pill">마음셋 랭킹</span><h1>따뜻함이 쌓이는 곳</h1><p class="sub">테스트용 가상 보상 기준입니다.</p></div><div class="rank-tabs"><button class="active" onclick="loadRank('weekly',this)">주간</button><button onclick="loadRank('total',this)">누적</button></div><div class="rank" id="rank"></div></section><div id="toast" class="toast"></div>
+<script>
+let inviteToken=(location.hash||'').startsWith('#invite=')?(location.hash||'').slice(8):'';
+let ws=null,selfId='',role='',roomId='',rewardAmount=null,timer=null,seconds=300,queued=false,rewardPending=false;
+let rewardToken='',rewardSubmitting=false,currentRankType='weekly',rankRequest=0;
+function navigate(id){if(!currentUser){show('auth');return;}if(roomId||queued||rewardPending){toast('진행 중인 대화나 보상이 있습니다. 먼저 완료하거나 대기 취소를 눌러주세요.');return;}if(id==='ranking')loadRank('weekly');else show(id)}
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');scrollTo(0,0)}
+function toast(t){const e=document.getElementById('toast');e.textContent=t;e.classList.add('on');setTimeout(()=>e.classList.remove('on'),2200)}
+let connecting=null;
+function connect(){
+  if(ws&&ws.readyState===1)return Promise.resolve();if(connecting)return connecting;
+  const socket=new WebSocket(`${location.protocol==='https:'?'wss':'ws'}://${location.host}`);ws=socket;
+  connecting=new Promise((resolve,reject)=>{
+    socket.onopen=()=>{refreshNotifications();resolve();};socket.onerror=reject;
+    socket.onclose=()=>{if(ws!==socket)return;connecting=null;if(rewardPending){roomId='';toast('연결이 끊겼지만 보상 완료를 다시 누를 수 있습니다.');return;}if(roomId||queued){roomId='';queued=false;clearInterval(timer);show('home');toast('서버 연결이 끊어졌습니다. 다시 시작해주세요.');}};
+    socket.onmessage=e=>{if(ws===socket)handle(JSON.parse(e.data));};
+  }).finally(()=>{if(ws===socket)connecting=null;});return connecting;
+}
+
+async function join(r){if(!currentUser){show('auth');return;}role=r;const nick=(document.getElementById('nick').value.trim()||'익명');try{if(!ws||ws.readyState!==1)await connect();queued=true;ws.send(JSON.stringify({type:'joinQueue',role:r,nickname:nick,...(inviteToken?{inviteToken}:{})}));show('waiting');}catch{queued=false;toast('서버에 연결할 수 없습니다.')}}
+function handle(m){if(m.type==='notificationsChanged'){refreshNotifications();return;}if(m.type==='authExpired'){clearAuth();toast('로그인이 만료되었습니다. 다시 로그인해주세요.');return;}if(m.type==='inviteClosed'){queued=false;roomId='';document.getElementById('familyStatus').textContent=m.message;show('home');toast(m.message);return;}if(m.type==='hello')selfId=m.id;if(m.type==='queued'){document.getElementById('counts').textContent=`마음하나 ${m.counts.하나}명 · 위로해주기 ${m.counts.둘}명`;document.getElementById('waitStatus').textContent=m.private?'가족이 들어오기를 기다리고 있어요. '+(m.counts.하나+m.counts.둘)+' / 3명':'현재 매칭 대기 중입니다.'}
+if(m.type==='matched'){if(inviteToken)document.getElementById('familyStatus').textContent='초대받은 세 사람이 모여 대화를 시작했습니다.';queued=false;rewardPending=false;rewardAmount=null;document.getElementById('rewardBtn').disabled=true;document.querySelectorAll('.reward-options button').forEach(b=>b.classList.remove('sel'));document.getElementById('messages').innerHTML='';roomId=m.room.roomId;document.getElementById('members').innerHTML=m.room.members.map(x=>`<span class="member">${x.role==='하나'?'마음하나':x.role==='둘'?'마음둘':'마음셋'} · ${esc(x.nickname)}</span>`).join('');show('chat');startTimer(m.room.seconds);toast('매칭 완료!')}
+if(m.type==='chat'){append(m.message)} if(m.type==='system'){append({who:'시스템',nickname:'',text:m.text,system:true})}
+if(m.type==='completed'){if(inviteToken)document.getElementById('familyStatus').textContent='가족 대화가 끝났습니다. 다시 하려면 홈에서 새 가족방을 만들어주세요.';clearInterval(timer);if(role==='하나'){rewardPending=true;rewardToken=m.rewardToken||'';show('reward');}else{roomId='';toast('5분 대화가 완료되었습니다.');show('home')}}
+if(m.type==='roomEnded'){clearInterval(timer);roomId='';queued=false;rewardPending=false;show('home');toast(m.reason||'채팅방이 종료되었습니다.')}
+if(m.type==='rewardRecorded'){rewardPending=false;toast(`${Number(m.amount).toLocaleString()}원 가상 보상이 기록되었습니다.`);roomId='';setTimeout(()=>loadRank('weekly'),700)}
+if(m.type==='rankingChanged'&&document.getElementById('ranking').classList.contains('active'))loadRank(currentRankType);
+if(m.type==='ranking'&&m.rankingType===currentRankType){renderRank(m.rows)} if(m.type==='queueCancelled'){queued=false;show('role')}
+if(m.type==='error'){if(queued){queued=false;show('role')}toast(m.message)}}
+function append(m){const el=document.getElementById('messages');const d=document.createElement('div');d.className='msg'+(m.id===selfId?' me':'');d.innerHTML=`<div class="who">${esc(m.who==='하나'?'마음하나':m.who==='둘'?'마음둘':m.who==='셋'?'마음셋':'시스템')} ${m.nickname?'· '+esc(m.nickname):''}</div><div class="bubble">${esc(m.text)}</div>`;el.appendChild(d);el.scrollTop=el.scrollHeight}
+function esc(s){return String(s).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function send(){const i=document.getElementById('input'),t=i.value.trim();if(!t)return;if(!ws||ws.readyState!==1){toast('서버 연결이 끊어졌습니다. 다시 접속해주세요.');return;}ws.send(JSON.stringify({type:'chat',text:t}));i.value=''}
+function leave(){if(!ws||ws.readyState!==1){roomId='';clearInterval(timer);show('home');toast('연결이 끊어져 홈으로 돌아갑니다.');return;}ws.send(JSON.stringify({type:'leaveRoom'}))}
+function cancelQueue(){queued=false;if(ws&&ws.readyState===1)ws.send(JSON.stringify({type:'cancelQueue'}));else show('role')}
+function startTimer(s){seconds=s;clearInterval(timer);updateTimer();timer=setInterval(()=>{seconds--;updateTimer();if(seconds<=0)clearInterval(timer)},1000)}
+function updateTimer(){document.getElementById('timer').textContent=`${String(Math.floor(seconds/60)).padStart(2,'0')}:${String(seconds%60).padStart(2,'0')}`}
+function reward(v){rewardAmount=v;document.querySelectorAll('.reward-options button').forEach(b=>b.classList.toggle('sel',b.textContent.replace(/[,원]/g,'')==v));document.getElementById('split').textContent=`${v.toLocaleString()}원 선택 · 마음둘/마음셋/플랫폼에 1/3씩 기록됩니다.`;document.getElementById('rewardBtn').disabled=false}
+async function finishReward(){
+  if(rewardAmount===null||rewardSubmitting)return;
+  if(!rewardToken){toast('보상 정보가 없습니다. 화면을 캡처해 알려주세요.');return;}
+  rewardSubmitting=true;const btn=document.getElementById('rewardBtn');btn.disabled=true;btn.textContent='보상을 기록하고 있어요…';
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),12000);
+  try{
+    const response=await fetch('/api/reward',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({rewardToken,amount:rewardAmount}),signal:controller.signal});
+    const result=await response.json();if(!response.ok)throw new Error(result.error||'보상을 기록하지 못했습니다.');
+    rewardPending=false;roomId='';rewardToken='';
+    toast(result.recipients.map(r=>`${r.nickname} ${Number(r.amount).toLocaleString()}원`).join(' · ')+' 반영 완료');
+    loadRank('weekly');
+  }catch(e){toast(e.name==='AbortError'?'응답이 지연됩니다. 보상 선택 완료를 다시 눌러주세요.':e.message);}
+  finally{clearTimeout(timeout);rewardSubmitting=false;btn.disabled=false;btn.textContent='보상 선택 완료';}
+}
+async function loadRank(type,btn){
+  if(roomId||queued||rewardPending){toast('진행 중인 대화나 보상을 먼저 마쳐주세요.');return;}
+  currentRankType=type;const request=++rankRequest;
+  document.querySelectorAll('.rank-tabs button').forEach((x,i)=>x.classList.toggle('active',i===(type==='total'?1:0)));
+  show('ranking');document.getElementById('rank').textContent='랭킹을 불러오는 중입니다…';
+  try{const response=await fetch('/api/rankings?type='+type,{cache:'no-store'});if(!response.ok)throw new Error();const result=await response.json();if(request===rankRequest)renderRank(result.rows);}
+  catch{if(request===rankRequest)document.getElementById('rank').textContent='랭킹을 불러오지 못했습니다. 주간 또는 누적 버튼을 눌러 다시 시도해주세요.';}
+}
+setInterval(()=>{if(!document.hidden&&document.getElementById('ranking').classList.contains('active'))loadRank(currentRankType);},5000);
+function renderRank(rows){document.getElementById('rank').innerHTML=rows.length?rows.map(r=>`<div class="rr"><strong>${r.rank}</strong><span>${esc(r.nickname)}</span><strong>${Number(r.amount).toLocaleString()}원</strong><span>${r.sessions}회</span></div>`).join(''):`<div style="padding:25px;text-align:center;color:#888">아직 기록이 없습니다.</div>`}
+
+let currentUser=null,authMode='register',authBusy=false;
+function setAuthMode(mode){
+  if(authBusy)return;authMode=mode;const signup=mode==='register';
+  document.getElementById('signupFields').hidden=!signup;
+  ['signupNickname','gender','age'].forEach(id=>document.getElementById(id).required=signup);
+  document.getElementById('password').autocomplete=signup?'new-password':'current-password';
+  document.getElementById('signupTab').classList.toggle('active',signup);document.getElementById('loginTab').classList.toggle('active',!signup);
+  document.getElementById('authSubmit').textContent=signup?'가입하고 시작하기':'로그인';document.getElementById('authError').textContent='';
+}
+async function api(url,data){
+  const controller=new AbortController(),timeout=setTimeout(()=>controller.abort(),15000);
+  try{const response=await fetch(url,{method:data===undefined?'GET':'POST',credentials:'same-origin',headers:data===undefined?{}:{'Content-Type':'application/json'},body:data===undefined?undefined:JSON.stringify(data),signal:controller.signal,cache:'no-store'});
+    const result=await response.json();if(!response.ok)throw new Error(result.error||'요청을 처리하지 못했습니다.');return result;
+  }catch(e){if(e.name==='AbortError')throw new Error('연결이 지연됩니다. 잠시 후 다시 시도해주세요.');throw e;}finally{clearTimeout(timeout);}
+}
+function applyUser(user){currentUser=user;document.getElementById('nick').value=user.nickname;document.getElementById('accountNav').textContent='내 정보';show('home');refreshNotifications();connect().catch(()=>{});if(inviteToken)inspectFamilyInvite();}
+function clearAuth(){
+  document.getElementById('familyBar').hidden=true;
+  notificationRequest++;activeNotification=null;document.getElementById('rewardNotice').hidden=true;document.getElementById('rewardNoticeText').textContent='';
+  currentUser=null;roomId='';queued=false;rewardPending=false;rewardToken='';clearInterval(timer);
+  if(ws){ws.onclose=null;ws.close();ws=null;}connecting=null;document.getElementById('nick').value='';document.getElementById('password').value='';document.getElementById('deletePassword').value='';
+  document.getElementById('profileRows').innerHTML='';document.getElementById('profileTitle').textContent='내 정보';document.getElementById('rank').innerHTML='';
+  document.getElementById('messages').innerHTML='';document.getElementById('members').innerHTML='';document.getElementById('input').value='';
+  document.getElementById('accountNav').textContent='로그인';setAuthMode('login');show('auth');
+}
+async function submitAuth(event){
+  event.preventDefault();if(authBusy)return;authBusy=true;const button=document.getElementById('authSubmit');button.disabled=true;button.textContent='확인 중…';
+  document.getElementById('authError').textContent='';
+  const data={username:document.getElementById('username').value,password:document.getElementById('password').value};
+  if(authMode==='register')Object.assign(data,{nickname:document.getElementById('signupNickname').value,gender:document.getElementById('gender').value,age:document.getElementById('age').value});
+  try{const result=await api('/api/'+authMode,data);document.getElementById('password').value='';applyUser(result.user);try{localStorage.setItem('maumsetJoined','1');}catch{}}
+  catch(e){document.getElementById('authError').textContent=e.message;}
+  finally{authBusy=false;button.disabled=false;button.textContent=authMode==='register'?'가입하고 시작하기':'로그인';}
+}
+function openAccount(){
+  if(!currentUser){show('auth');return;}
+  if(roomId||queued||rewardPending){toast('진행 중인 대화나 보상을 먼저 마쳐주세요.');return;}
+  document.getElementById('profileTitle').textContent=currentUser.nickname+'님의 정보';
+  document.getElementById('profileRows').innerHTML=[['아이디',currentUser.username],['닉네임',currentUser.nickname],['성별',currentUser.gender],['나이',currentUser.age+'세']].map(([label,value])=>`<div class="profile-row"><span>${label}</span><strong>${esc(value)}</strong></div>`).join('');
+  document.getElementById('deleteError').textContent='';document.getElementById('deletePassword').value='';show('account');
+}
+async function logout(){try{await api('/api/logout',{});clearAuth();toast('로그아웃했습니다.');}catch(e){toast(e.message);}}
+async function deleteAccount(event){
+  event.preventDefault();const button=document.getElementById('deleteBtn');if(button.disabled)return;button.disabled=true;document.getElementById('deleteError').textContent='';
+  try{await api('/api/account',{password:document.getElementById('deletePassword').value});clearAuth();document.getElementById('authForm').reset();setAuthMode('register');try{localStorage.removeItem('maumsetJoined');}catch{}toast('회원탈퇴가 완료되었습니다.');}
+  catch(e){document.getElementById('deleteError').textContent=e.message;}
+  finally{button.disabled=false;}
+}
+let activeNotification=null,notificationRequest=0;
+async function refreshNotifications(){
+  if(!currentUser)return;const userId=currentUser.id,request=++notificationRequest;
+  try{const result=await api('/api/notifications');if(!currentUser||currentUser.id!==userId||request!==notificationRequest)return;
+    activeNotification=result.notifications[0]||null;document.getElementById('rewardNotice').hidden=!activeNotification;
+    if(activeNotification)document.getElementById('rewardNoticeText').textContent=`가상 보상 ${Number(activeNotification.amount).toLocaleString()}원을 받았습니다`;
+  }catch{}
+}
+async function acknowledgeReward(){
+  if(!activeNotification)return;const button=document.getElementById('noticeAck');if(button.disabled)return;button.disabled=true;
+  try{await api('/api/notifications/ack',{id:activeNotification.id});await refreshNotifications();}catch(e){toast(e.message);}finally{button.disabled=false;}
+}
+setInterval(()=>{if(!document.hidden&&currentUser)refreshNotifications();},10000);
+
+function familyLink(){return location.protocol+'//'+location.host+(location.pathname||'/')+'#invite='+inviteToken;}
+function renderFamilyInvite(){
+  document.getElementById('familyBar').hidden=!inviteToken||!currentUser;
+  document.getElementById('authInviteHint').hidden=!inviteToken;
+  document.getElementById('inviteLink').value=inviteToken?familyLink():'';
+}
+async function inspectFamilyInvite(){
+  const token=inviteToken,userId=currentUser?.id;renderFamilyInvite();
+  try{const result=await api('/api/invites/info',{token});if(inviteToken!==token||currentUser?.id!==userId)return;
+    if(result.state!=='waiting'){document.getElementById('familyStatus').textContent='이 초대방은 이미 대화를 시작했습니다. 새 가족방을 만들어주세요.';return;}
+    document.getElementById('familyStatus').textContent='링크를 받은 세 사람끼리만 대화합니다. 마음하나 1명과 위로해주기 2명을 선택해주세요.';show('role');
+  }catch(e){if(inviteToken===token&&currentUser?.id===userId){document.getElementById('familyStatus').textContent=e.message;toast(e.message);}}
+}
+async function createFamilyInvite(){
+  if(!currentUser){show('auth');return;}if(roomId||queued||rewardPending){toast('진행 중인 대화나 보상을 먼저 마쳐주세요.');return;}
+  const button=document.getElementById('createFamilyBtn');if(button.disabled)return;button.disabled=true;
+  try{const result=await api('/api/invites',{});inviteToken=result.token;if(typeof history!=='undefined')history.replaceState(null,'','#invite='+inviteToken);renderFamilyInvite();
+    document.getElementById('familyStatus').textContent='초대 링크를 가족 두 분에게 보내주세요. 마음하나 1명과 위로해주기 2명으로 참여합니다.';show('role');}
+  catch(e){toast(e.message);}finally{button.disabled=false;}
+}
+async function shareFamilyInvite(){
+  if(!inviteToken)return;
+  if(typeof navigator!=='undefined'&&navigator.share){try{await navigator.share({title:'마음셋 가족 초대방',text:'우리끼리 5분 대화를 해요. 링크로 들어와 역할을 선택해주세요.',url:familyLink()});return;}catch(e){if(e.name==='AbortError')return;}}
+  await copyFamilyInvite();
+}
+async function copyFamilyInvite(){
+  if(!inviteToken)return;
+  try{await navigator.clipboard.writeText(familyLink());toast('초대 링크를 복사했습니다. 가족에게 보내주세요.');}
+  catch{const input=document.getElementById('inviteLink');input.focus();input.select();toast('위 링크를 길게 눌러 복사해주세요.');}
+}
+function exitFamilyInvite(){
+  if(roomId||queued||rewardPending){toast('대기 취소 또는 진행 중인 대화를 먼저 마쳐주세요.');return;}
+  inviteToken='';if(typeof history!=='undefined')history.replaceState(null,'',location.pathname||'/');renderFamilyInvite();show(currentUser?'home':'auth');
+}
+renderFamilyInvite();
+
+(async function restoreLogin(){let known=false;try{known=localStorage.getItem('maumsetJoined')==='1';}catch{}setAuthMode(known?'login':'register');
+  const button=document.getElementById('authSubmit');button.disabled=true;
+  try{const result=await api('/api/me');if(result.user)applyUser(result.user);else document.getElementById('accountNav').textContent='로그인';}
+  catch{document.getElementById('authError').textContent='서버에 연결하지 못했습니다. 잠시 후 다시 로그인해주세요.';}
+  finally{button.disabled=false;}
+})();
+
+</script></body></html>
