@@ -1,0 +1,8 @@
+node_modules/
+rankings.json
+rankings.json.tmp
+.env
+
+data/
+*.sqlite*
+.env
