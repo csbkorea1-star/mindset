@@ -1,12 +1,12 @@
 {
   "name": "maumset-live-mvp",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "private": true,
   "description": "마음셋 실시간 3인 채팅 MVP",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "test": "node tests/integration.cjs && node tests/client.cjs && node tests/invitations.cjs"
+    "test": "node tests/upgrade.cjs"
   },
   "dependencies": {
     "ws": "^8.18.3",

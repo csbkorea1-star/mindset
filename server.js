@@ -350,17 +350,10 @@ wss.on('connection',(ws,req)=>{
     let msg; try{msg=JSON.parse(raw.toString())}catch{return}
     if(!msg||typeof msg!=='object')return;
     if(msg.type==='joinQueue'){
-      removeFromQueue(user); if(user.roomId){send(ws,'error',{message:'이미 채팅방에 참여 중입니다.'});return;}
+      if(user.roomId){send(ws,'error',{message:'이미 채팅방에 참여 중입니다.'});return;} if(queues.하나.includes(user)||queues.둘.includes(user)){send(ws,'error',{message:'이미 대기방에서 매칭을 기다리고 있습니다.'});return;}
       if([...users.values()].some(u=>u!==user&&u.accountId===user.accountId&&(u.roomId||u.queueKey||queues.하나.includes(u)||queues.둘.includes(u)))){send(ws,'error',{message:'다른 창에서 이미 참여 중입니다.'});return;}
       user.role=msg.role==='하나'?'하나':'둘';user.nickname=current.user.nickname;
-      let queue=queues,key=null;
-      if(msg.inviteToken){
-        const invite=await accounts.invitation(msg.inviteToken);
-        if(!invite||invite.state!=='waiting'){send(ws,'inviteClosed',{message:'초대 링크가 만료되었거나 이미 사용되었습니다. 새 초대방을 만들어주세요.'});return;}
-        key=invite.key;queue=privateQueues.get(key)||{하나:[],둘:[],ownerId:invite.ownerId,expires:invite.expires};
-        if(queue[user.role].length>=(user.role==='하나'?1:2)){send(ws,'error',{message:user.role==='하나'?'마음하나가 이미 있습니다. 위로해주기를 선택해주세요.':'위로해주는 두 자리가 찼습니다. 마음하나를 선택해주세요.'});return;}
-        privateQueues.set(key,queue);
-      }
+      const queue=queues,key=null;
       user.queueKey=key;queue[user.role].push(user);updateQueue(queue,!!key);await tryMatch(queue,key);
     } else if(msg.type==='cancelQueue') { removeFromQueue(user); send(ws,'queueCancelled'); }
     else if(msg.type==='chat') { const room=rooms.get(user.roomId); if(!room||room.ended||room.completed)return; const text=String(msg.text||'').trim().slice(0,1000); if(!text)return; broadcast(room,'chat',{message:{id:id(),who:user.role,nickname:user.nickname,text,at:Date.now()}}); }
